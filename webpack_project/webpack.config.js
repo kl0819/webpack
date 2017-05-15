@@ -29,5 +29,11 @@ module.exports = {
         test: /\.css$/
       }
     ]
-  }
+  },
+  plugins: [
+    new webpack.optimize.CommonsChunkPlugin({
+      // Place the dubplicate chunks of code/dependencies into the vendor bundle only
+      name: 'vendor'
+    })
+  ]
 };
