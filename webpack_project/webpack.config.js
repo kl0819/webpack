@@ -16,7 +16,9 @@ module.exports = {
   },
   output: {
     path: path.join(__dirname, 'dist'),
-    filename: '[name].js' // name gets replaced with property name of entry object
+    filename: '[name].[chunkhash].js'
+    // [name] gets replaced with property name of entry object
+    // [chunkhash] "unique ID" to handle cached files
   },
   module: {
     rules: [
@@ -34,7 +36,7 @@ module.exports = {
   plugins: [
     new webpack.optimize.CommonsChunkPlugin({
       // Place the dubplicate chunks of code/dependencies into the vendor bundle only
-      name: 'vendor'
+      names: ['vendor', 'manifest'] // manifest file to see if vendor file actually changed 
     }),
     new HtmlWebPackPlugin({
       template: 'src/index.html'
