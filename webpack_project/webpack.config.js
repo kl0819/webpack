@@ -1,5 +1,6 @@
 var webpack = require('webpack');
 var path = require('path');
+var HtmlWebPackPlugin = require('html-webpack-plugin');
 
 // Array of each modules to be split offf in the vendor files
 const VENDOR_LIBS = [
@@ -34,6 +35,9 @@ module.exports = {
     new webpack.optimize.CommonsChunkPlugin({
       // Place the dubplicate chunks of code/dependencies into the vendor bundle only
       name: 'vendor'
+    }),
+    new HtmlWebPackPlugin({
+      template: 'src/index.html'
     })
   ]
 };
