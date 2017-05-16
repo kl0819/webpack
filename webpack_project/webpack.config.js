@@ -36,10 +36,13 @@ module.exports = {
   plugins: [
     new webpack.optimize.CommonsChunkPlugin({
       // Place the dubplicate chunks of code/dependencies into the vendor bundle only
-      names: ['vendor', 'manifest'] // manifest file to see if vendor file actually changed 
+      names: ['vendor', 'manifest'] // manifest file to see if vendor file actually changed
     }),
     new HtmlWebPackPlugin({
       template: 'src/index.html'
+    }),
+    new webpack.DefinePlugin({
+      'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV)
     })
   ]
 };
