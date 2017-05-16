@@ -11,21 +11,21 @@ const componentRoutes = {
   indexRoute: { component: ArtistMain },
   childRoutes: [
     {
-      path: 'artist/new',
+      path: 'artists/new',
       getComponent(location, cb) {
         System.import('./components/artists/ArtistCreate')
         .then(module => cb(null, module.default));
       }
     },
     {
-      path: 'artist/:id',
+      path: 'artists/:id',
       getComponent(location, cb) {
         System.import('./components/artists/ArtistDetail')
         .then(module => cb(null, module.default));
       }
     },
     {
-      path: 'artist/:id/edit',
+      path: 'artists/:id/edit',
       getComponent(location, cb) {
         System.import('./components/artists/ArtistEdit')
         .then(module => cb(null, module.default));
